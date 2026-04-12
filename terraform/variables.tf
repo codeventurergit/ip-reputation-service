@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "lambda_function_name" {
   description = "Name of the Lambda function"
   type        = string
-  default     = ""
+  default     = "ip-reputation-service"
 }
 
 variable "dynamodb_table_name" {
