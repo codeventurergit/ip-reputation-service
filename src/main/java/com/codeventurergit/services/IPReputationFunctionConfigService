@@ -1,0 +1,18 @@
+package com.codeventurergit.services;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.function.Function;
+
+@Configuration
+public class IPReputationFunctionConfigService {
+
+    @Bean
+    public Function<IpRequest, IpResponse> lookup() {
+        return request -> {
+            // TODO: Replace with DynamoDB lookup
+            return new IpResponse(request.getIp(), "unknown");
+        };
+    }
+}
