@@ -9,7 +9,7 @@ import java.util.function.Function;
 public class IPReputationFunctionConfigService {
 
     @Bean
-    public Function<IpRequest, IpResponse> lookup() {
+    public Function<IPRequtationRequestService, IPReputationResponseService> lookup() {
         return request -> {
             // TODO: Replace with DynamoDB lookup
             return new IpResponse(request.getIp(), "unknown");
