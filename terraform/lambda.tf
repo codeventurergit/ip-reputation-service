@@ -60,7 +60,7 @@ resource "aws_lambda_function" "ip_reputation-service" {
   role          = aws_iam_role.lambda_role.arn
 
   # Lambda service handler that receives requests
-  handler = "com.codeventurergit.services.RequestService::handleRequest"
+  handler = "org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest"
 
   runtime = "java21"
 
