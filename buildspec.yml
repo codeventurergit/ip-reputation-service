@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+    commands:
+      - echo Installing Terraform
+      - curl -o terraform.zip https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip
+      - unzip terraform.zip
+      - mv terraform /usr/local/bin/
+      - terraform --version
+
+  pre_build:
+    commands:
+      - echo Running Maven build
+      - mvn -q clean package
+
+  build:
+    commands:
+      - echo Initializing Terraform
+      - cd terraform
+      - terraform init -input=false
+      - terraform apply -auto-approve -input=false
+
+  post_build:
+    commands:
+      - echo Build and deployment complete
+
+artifacts:
+  files:
+    - '**/*'
